@@ -1,0 +1,80 @@
+
+[NEAT]
+fitness_criterion     = max     # chegar a pontuação maxima e o meu objetivo
+fitness_threshold     = 1000    # Limite de pontos a serem feitos, mais pode ser infinito dependendo doq ue vc quer.
+pop_size              = 100     # Esse é o tamanho da população de passaros por geração. Pode ser maior ou menor.
+reset_on_extinction   = False   # Caso ele nãop consiga evoluir, ele deve informar isso ao usuario. Impedindo ukm loop infinito.
+
+[DefaultGenome]
+# node activation options
+activation_default      = tanh  # Ele deve usar a tangente hiperbólica
+activation_mutate_rate  = 0.0   # deve usar outro tipo de mutação.(No caso Não).
+activation_options      = tanh  # Essa são as opções de uso de função.(No caso ele só vai usar a tangente hiperbólica).
+
+# node aggregation options
+aggregation_default     = sum   # Como os dados serão agregados. ( No caso serão somados)
+aggregation_mutate_rate = 0.0   # Não queremos mudança ou seja  não queremos que multiplieuq, divida ou subtraia e etc.
+aggregation_options     = sum   # Essa são as opções de uso agregado. ( No caso ele só irá usar a soma).
+
+# node bias options             ## Essa parte pode ser alterada para se fazer testes no passaro ##
+bias_init_mean          = 0.0   # Media.
+bias_init_stdev         = 1.0   # Desvio padrão.
+bias_max_value          = 30.0  # Maximo Valor.
+bias_min_value          = -30.0 # Menor Valor.
+bias_mutate_power       = 0.5   # Reduz a mutação.( No caso o valor cai pela metade usando 0.5).
+bias_mutate_rate        = 0.7   # Taxa de mutação. (No caso a taxa de mutação será de 70%).
+bias_replace_rate       = 0.1   # Chance de ser um novo valor aleatorio, entre os valores de bias_min_value e bias_max_value.
+
+# genome compatibility options
+compatibility_disjoint_coefficient = 1.0 # compatibilidade dos genes.
+compatibility_weight_coefficient   = 0.5
+
+# connection add/remove rates
+conn_add_prob           = 0.5   # Provabildiade de adicionar uma conexão nova.
+conn_delete_prob        = 0.5   # Provabilidade de remover uma conexão nova.
+
+# connection enable options
+enabled_default         = True  # Conexão ativa ou inativa.
+enabled_mutate_rate     = 0.01  # Provabilidade de ter uma mutação nessa conexão.
+
+feed_forward            = True  # Ordem que a rede reural deve ser alimentada.
+initial_connection      = full  # Inicialmente todos os nós estão ligados na entrada e saida.
+
+# node add/remove rates
+node_add_prob           = 0.2   # Provabildiade de adicionar um gene novo.
+node_delete_prob        = 0.2   # Provabilidade de remover um gene novo.
+
+# network parameters
+num_hidden              = 0     # Quantos nós temos
+num_inputs              = 3     # Quantas entradas (inputs).
+num_outputs             = 1     # Qauntas Saidas (outputs).
+
+# node response options         ## Chance de um valor a ser multiplciado pelo nó. ## Testes de modificação podem ser feitos.
+response_init_mean      = 1.0   # Media
+response_init_stdev     = 0.0   # Desvio padrão.
+response_max_value      = 30.0  # Maximo Valor.
+response_min_value      = -30.0 # Menor Valor.
+response_mutate_power   = 0.0   # Reduz a mutação.
+response_mutate_rate    = 0.0   # Taxa de mutação.
+response_replace_rate   = 0.0   # Chance de ser um novo valor aleatorio.
+
+# connection weight options     ## Chances do valor do peso se altear. ##   Testes de modificação podem ser feitos.
+weight_init_mean        = 0.0   # Media
+weight_init_stdev       = 1.0   # Desvio padrão.
+weight_max_value        = 30    # Maximo Valor.
+weight_min_value        = -30   # Menor Valor.
+weight_mutate_power     = 0.5   # Reduz a mutação.
+weight_mutate_rate      = 0.8   # Taxa de mutação.
+weight_replace_rate     = 0.1   # Chance de ser um novo valor aleatorio.
+
+[DefaultSpeciesSet]
+compatibility_threshold = 3.0 # Limite do valor de especies ( passaros que tem estruturas parecidas, pela quantidade de nós ou valores).
+
+[DefaultStagnation]
+species_fitness_func = max  # Maximo de pontuação
+max_stagnation       = 20   # Estagnação maxima, ou seja, quantidade maxima de não evoluir.
+species_elitism      = 2    # Mantenha apenas dois individuos, dessa geração.
+
+[DefaultReproduction]
+elitism            = 2      # Quantos deles não sofreram mutação.
+survival_threshold = 0.2    # Quantos podem fazer a reprodução.( Esse é o valor padrão 0.2, ou seja, 20%).
